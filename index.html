@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HEBRASTOCK · Iniciar sesión</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="hs-login-pagina">
+
+  <div class="hs-login-tarjeta">
+    <div class="hs-login-marca">
+      <div class="hs-hilo-icono">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M6 9c2.5 4 3.5-5 6-1s3.5 5 6 1" />
+        </svg>
+      </div>
+      <div>
+        <div class="hs-login-marca-texto">HEBRASTOCK</div>
+        <div class="hs-login-marca-sub">Gestión de inventario para tiendas de ropa</div>
+      </div>
+    </div>
+
+    <h1>Iniciar sesión</h1>
+    <p class="hs-subtexto">Ingresa tus credenciales para acceder al sistema.</p>
+
+    <div id="hs-error" class="hs-login-error hs-oculto"></div>
+
+    <form id="form-login">
+      <div class="hs-campo">
+        <label for="usuario">Usuario</label>
+        <input type="text" id="usuario" name="usuario" autocomplete="username" required />
+      </div>
+      <div class="hs-campo">
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" name="password" autocomplete="current-password" required />
+      </div>
+      <button type="submit" class="hs-btn hs-btn-primario">Ingresar</button>
+    </form>
+
+    <div class="hs-login-ayuda">
+      Usuario de prueba: <strong>admin</strong> / contraseña: <strong>admin123</strong><br />
+      (Rol Administrador · también existe <strong>vendedor</strong> / <strong>venta123</strong>)
+    </div>
+  </div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    // Si ya hay una sesión activa, va directo al dashboard
+    if (Auth.getSesion()) {
+      window.location.href = "dashboard.html";
+    }
+
+    const form = document.getElementById("form-login");
+    const divError = document.getElementById("hs-error");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const usuario = document.getElementById("usuario").value.trim();
+      const password = document.getElementById("password").value;
+
+      const sesion = Auth.login(usuario, password);
+      if (sesion) {
+        window.location.href = "dashboard.html";
+      } else {
+        divError.textContent = "Usuario o contraseña incorrectos, o el usuario está inactivo.";
+        divError.classList.remove("hs-oculto");
+      }
+    });
+  </script>
+</body>
+</html>

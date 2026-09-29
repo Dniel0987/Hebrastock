@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HEBRASTOCK · Inventario</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="hs-app">
+    <div id="hs-sidebar"></div>
+
+    <div>
+      <div id="hs-topbar"></div>
+
+      <main class="hs-contenido">
+        <div class="hs-panel">
+          <h2 class="hs-panel-titulo">
+            Productos en inventario
+            <button class="hs-btn hs-btn-primario hs-btn-chico" onclick="abrirModalProducto()">+ Nuevo producto</button>
+          </h2>
+
+          <div class="hs-toolbar">
+            <input type="text" id="filtro-texto" placeholder="Buscar por nombre o código..." />
+            <select id="filtro-categoria">
+              <option value="">Categoría (todas)</option>
+            </select>
+            <select id="filtro-talla">
+              <option value="">Talla (todas)</option>
+            </select>
+            <select id="filtro-color">
+              <option value="">Color (todos)</option>
+            </select>
+            <select id="filtro-estado">
+              <option value="">Estado (todos)</option>
+              <option value="Activo">Activo</option>
+              <option value="Inactivo">Inactivo</option>
+            </select>
+          </div>
+
+          <div class="hs-tabla-wrap">
+            <table class="hs-tabla">
+              <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>Nombre</th>
+                  <th>Categoría</th>
+                  <th>Talla</th>
+                  <th>Color</th>
+                  <th>Precio</th>
+                  <th>Disponible</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="tabla-productos"></tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Modal: crear / editar producto -->
+  <div class="hs-modal-fondo hs-oculto" id="modal-producto">
+    <div class="hs-modal">
+      <div class="hs-modal-header">
+        <h2 id="modal-producto-titulo">Nuevo producto</h2>
+        <button class="hs-modal-cerrar" onclick="cerrarModalProducto()">&times;</button>
+      </div>
+      <form id="form-producto">
+        <div class="hs-modal-body">
+          <input type="hidden" id="p-codigo-original" />
+
+          <div class="hs-form-fila">
+            <div class="hs-campo">
+              <label for="p-codigo">Código del producto</label>
+              <input type="text" id="p-codigo" required placeholder="Ej: CAM-003" />
+            </div>
+            <div class="hs-campo">
+              <label for="p-nombre">Nombre</label>
+              <input type="text" id="p-nombre" required />
+            </div>
+          </div>
+
+          <div class="hs-form-fila">
+            <div class="hs-campo">
+              <label for="p-categoria">Categoría</label>
+              <input type="text" id="p-categoria" required placeholder="Ej: Camisetas" />
+            </div>
+            <div class="hs-campo">
+              <label for="p-talla">Talla</label>
+              <input type="text" id="p-talla" required placeholder="Ej: M, 32, Única" />
+            </div>
+          </div>
+
+          <div class="hs-form-fila">
+            <div class="hs-campo">
+              <label for="p-color">Color</label>
+              <input type="text" id="p-color" required />
+            </div>
+            <div class="hs-campo">
+              <label for="p-precio">Precio</label>
+              <input type="number" id="p-precio" min="0" step="100" required />
+            </div>
+          </div>
+
+          <div class="hs-form-fila">
+            <div class="hs-campo">
+              <label for="p-cantidad">Cantidad disponible</label>
+              <input type="number" id="p-cantidad" min="0" step="1" required />
+            </div>
+            <div class="hs-campo">
+              <label for="p-estado">Estado</label>
+              <select id="p-estado">
+                <option value="Activo">Activo</option>
+                <option value="Inactivo">Inactivo</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="hs-campo">
+            <label for="p-descripcion">Descripción</label>
+            <textarea id="p-descripcion" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="hs-modal-footer">
+          <button type="button" class="hs-btn hs-btn-secundario" onclick="cerrarModalProducto()">Cancelar</button>
+          <button type="submit" class="hs-btn hs-btn-primario">Guardar producto</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/productos.js"></script>
+</body>
+</html>

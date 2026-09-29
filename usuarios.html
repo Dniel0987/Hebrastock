@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HEBRASTOCK · Usuarios</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="hs-app">
+    <div id="hs-sidebar"></div>
+
+    <div>
+      <div id="hs-topbar"></div>
+
+      <main class="hs-contenido">
+        <div class="hs-panel">
+          <h2 class="hs-panel-titulo">
+            Usuarios del sistema
+            <button class="hs-btn hs-btn-primario hs-btn-chico" onclick="abrirModalUsuario()">+ Nuevo usuario</button>
+          </h2>
+
+          <div class="hs-tabla-wrap">
+            <table class="hs-tabla">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Usuario</th>
+                  <th>Rol</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="tabla-usuarios"></tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Modal: crear / editar usuario -->
+  <div class="hs-modal-fondo hs-oculto" id="modal-usuario">
+    <div class="hs-modal">
+      <div class="hs-modal-header">
+        <h2 id="modal-usuario-titulo">Nuevo usuario</h2>
+        <button class="hs-modal-cerrar" onclick="cerrarModalUsuario()">&times;</button>
+      </div>
+      <form id="form-usuario">
+        <div class="hs-modal-body">
+          <input type="hidden" id="u-id" />
+
+          <div class="hs-campo">
+            <label for="u-nombre">Nombre completo</label>
+            <input type="text" id="u-nombre" required />
+          </div>
+
+          <div class="hs-form-fila">
+            <div class="hs-campo">
+              <label for="u-usuario">Usuario (para iniciar sesión)</label>
+              <input type="text" id="u-usuario" required />
+            </div>
+            <div class="hs-campo">
+              <label for="u-password">Contraseña</label>
+              <input type="text" id="u-password" required />
+            </div>
+          </div>
+
+          <div class="hs-form-fila">
+            <div class="hs-campo">
+              <label for="u-rol">Rol</label>
+              <select id="u-rol">
+                <option value="Administrador">Administrador</option>
+                <option value="Vendedor">Vendedor</option>
+              </select>
+            </div>
+            <div class="hs-campo">
+              <label for="u-activo">Estado</label>
+              <select id="u-activo">
+                <option value="true">Activo</option>
+                <option value="false">Inactivo</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="hs-modal-footer">
+          <button type="button" class="hs-btn hs-btn-secundario" onclick="cerrarModalUsuario()">Cancelar</button>
+          <button type="submit" class="hs-btn hs-btn-primario">Guardar usuario</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/usuarios.js"></script>
+</body>
+</html>

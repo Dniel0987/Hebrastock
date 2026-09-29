@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HEBRASTOCK · Panel principal</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="hs-app">
+    <div id="hs-sidebar"></div>
+
+    <div>
+      <div id="hs-topbar"></div>
+
+      <main class="hs-contenido">
+
+        <div class="hs-grid-kpi">
+          <div class="hs-kpi">
+            <div class="hs-kpi-titulo">Productos registrados</div>
+            <div class="hs-kpi-valor" id="kpi-productos">0</div>
+          </div>
+          <div class="hs-kpi hs-kpi-alerta">
+            <div class="hs-kpi-titulo">Productos con bajo stock</div>
+            <div class="hs-kpi-valor" id="kpi-bajo-stock">0</div>
+          </div>
+          <div class="hs-kpi hs-kpi-verde">
+            <div class="hs-kpi-titulo">Ventas realizadas</div>
+            <div class="hs-kpi-valor" id="kpi-ventas">0</div>
+          </div>
+          <div class="hs-kpi">
+            <div class="hs-kpi-titulo">Total vendido</div>
+            <div class="hs-kpi-valor" id="kpi-total-ventas">$0</div>
+          </div>
+        </div>
+
+        <div class="hs-grid-2">
+          <div class="hs-panel">
+            <h2 class="hs-panel-titulo">
+              Ventas recientes
+              <a href="historial.html" class="hs-btn hs-btn-secundario hs-btn-chico">Ver historial</a>
+            </h2>
+            <div class="hs-tabla-wrap">
+              <table class="hs-tabla">
+                <thead>
+                  <tr>
+                    <th>Fecha</th>
+                    <th>Productos</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody id="tabla-ventas-recientes"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="hs-panel">
+            <h2 class="hs-panel-titulo">
+              Alertas de bajo stock
+              <a href="productos.html" class="hs-btn hs-btn-secundario hs-btn-chico">Ver inventario</a>
+            </h2>
+            <div class="hs-tabla-wrap">
+              <table class="hs-tabla">
+                <thead>
+                  <tr>
+                    <th>Producto</th>
+                    <th>Disponible</th>
+                  </tr>
+                </thead>
+                <tbody id="tabla-bajo-stock"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
